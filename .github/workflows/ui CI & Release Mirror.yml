@@ -1,4 +1,4 @@
-name: Frontend CI & Release Mirror
+name: ui CI & Release Mirror
 
 on:
   workflow_dispatch:

@@ -1,0 +1,76 @@
+//! Authentication-related Redis cache keys (OAuth, email, password)
+
+/// OAuth state TTL in seconds (5 minutes)
+pub const OAUTH_STATE_TTL_SECONDS: u64 = 300;
+
+/// OAuth state key prefix (stores PKCE verifier)
+/// Format: "oauth:state:{uuid}"
+pub const OAUTH_STATE_PREFIX: &str = "oauth:state:";
+
+/// OAuth pending signup key prefix
+/// Format: "oauth:pending:{uuid}"
+pub const OAUTH_PENDING_PREFIX: &str = "oauth:pending:";
+
+/// OAuth pending signup lock key prefix
+/// Format: "oauth:pending:lock:{uuid}"
+pub const OAUTH_PENDING_LOCK_PREFIX: &str = "oauth:pending:lock:";
+
+/// OAuth state key 생성
+pub fn oauth_state_key(state: &str) -> String {
+    format!("{}{}", OAUTH_STATE_PREFIX, state)
+}
+
+/// OAuth pending signup key 생성
+pub fn oauth_pending_key(token: &str) -> String {
+    format!("{}{}", OAUTH_PENDING_PREFIX, token)
+}
+
+/// OAuth pending signup lock key 생성
+pub fn oauth_pending_lock_key(token: &str) -> String {
+    format!("{}{}", OAUTH_PENDING_LOCK_PREFIX, token)
+}
+
+/// Email verification token prefix
+/// Format: "email_verification:{token}"
+pub const EMAIL_VERIFICATION_PREFIX: &str = "email_verification:";
+
+/// Pending email signup email index prefix
+/// Format: "email_signup:email:{email}"
+pub const EMAIL_SIGNUP_EMAIL_PREFIX: &str = "email_signup:email:";
+
+/// Pending email signup handle index prefix
+/// Format: "email_signup:handle:{handle}"
+pub const EMAIL_SIGNUP_HANDLE_PREFIX: &str = "email_signup:handle:";
+
+/// Password reset token prefix
+/// Format: "password_reset:{token}"
+pub const PASSWORD_RESET_PREFIX: &str = "password_reset:";
+
+/// Email change token prefix
+/// Format: "email_change:{token}"
+pub const EMAIL_CHANGE_PREFIX: &str = "email_change:";
+
+/// Email verification key 생성
+pub fn email_verification_key(token: &str) -> String {
+    format!("{}{}", EMAIL_VERIFICATION_PREFIX, token)
+}
+
+/// Pending email signup email index key 생성
+pub fn email_signup_email_key(email: &str) -> String {
+    format!("{}{}", EMAIL_SIGNUP_EMAIL_PREFIX, email)
+}
+
+/// Pending email signup handle index key 생성
+pub fn email_signup_handle_key(handle: &str) -> String {
+    format!("{}{}", EMAIL_SIGNUP_HANDLE_PREFIX, handle)
+}
+
+/// Password reset key 생성
+pub fn password_reset_key(token: &str) -> String {
+    format!("{}{}", PASSWORD_RESET_PREFIX, token)
+}
+
+/// Email change key 생성
+pub fn email_change_key(token: &str) -> String {
+    format!("{}{}", EMAIL_CHANGE_PREFIX, token)
+}

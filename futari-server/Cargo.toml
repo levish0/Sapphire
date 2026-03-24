@@ -14,7 +14,13 @@ description = "futari-server"
 
 [workspace.dependencies]
 # Internal crates
-futari-config = { path = "crates/futari-config" }
+futari_config = { path = "crates/futari_config" }
+futari_server = { path = "crates/futari_server" }
+futari_errors = {path ="crates/futari_errors"}
+futari_constants = {path = "crates/futari_constants"}
+futari_dto = {path = "crates/futari_dto"}
+futari_entity = {path = "crates/futari_entity"}
+futari_worker = {path = "crates/futari_worker"}
 
 # External dependencies
 tokio = { version = "1.50.0", features = ["full"] }

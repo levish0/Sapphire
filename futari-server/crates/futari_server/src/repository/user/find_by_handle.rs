@@ -1,0 +1,25 @@
+use sea_orm::{ColumnTrait, ConnectionTrait, EntityTrait, QueryFilter};
+use futari_entity::users::{Column as UsersColumn, Entity as UserEntity, Model as UserModel};
+use futari_errors::errors::Errors;
+
+/// 핸들로 사용자 존재 여부를 조회한다.
+///
+/// # 역할
+/// `handle` 조건 단건 조회를 수행하고 `Option<UserModel>`을 반환한다.
+///
+/// # Errors
+/// - 조회 실패 시 DB/저장소 에러를 반환한다.
+pub async fn repository_find_user_by_handle<C>(
+    conn: &C,
+    handle: String,
+) -> Result<Option<UserModel>, Errors>
+where
+    C: ConnectionTrait,
+{
+    let user = UserEntity::find()
+        .filter(UsersColumn::Handle.eq(handle))
+        .one(conn)
+        .await?;
+
+    Ok(user)
+}

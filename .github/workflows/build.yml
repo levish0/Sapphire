@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: futari-ui/.nvmrc
 
       - name: Install pnpm
         run: npm install -g pnpm

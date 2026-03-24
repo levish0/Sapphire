@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Frontend CI & Release Mirror
 
 on:
   workflow_dispatch:

@@ -19,11 +19,14 @@ importers:
         specifier: ^9.39.4
         version: 9.39.4
       '@fontsource-variable/inter':
-        specifier: ^5.2.8
+        specifier: latest
         version: 5.2.8
+      '@internationalized/date':
+        specifier: ^3.12.0
+        version: 3.12.0
       '@lucide/svelte':
-        specifier: ^1.7.0
-        version: 1.7.0(svelte@5.55.0)
+        specifier: ^0.577.0
+        version: 0.577.0(svelte@5.55.0)
       '@playwright/test':
         specifier: latest
         version: 1.58.2
@@ -857,8 +860,8 @@ packages:
   '@lhci/utils@0.15.1':
     resolution: {integrity: sha512-WclJnUQJeOMY271JSuaOjCv/aA0pgvuHZS29NFNdIeI14id8eiFsjith85EGKYhljgoQhJ2SiW4PsVfFiakNNw==}
 
-  '@lucide/svelte@1.7.0':
-    resolution: {integrity: sha512-YytBKOUBGox7yWcykZnYxOkn5WpR5G1qYXLYXV/j1B79SOTTEKzB+s5yF5Rq9l9OkweDStNH2b4yTqfvhEhV8g==}
+  '@lucide/svelte@0.577.0':
+    resolution: {integrity: sha512-0P6mkySd2MapIEgq08tADPmcN4DHndC/02PWwaLkOerXlx5Sv9aT4BxyXLIY+eccr0g/nEyCYiJesqS61YdBZQ==}
     peerDependencies:
       svelte: ^5
 
@@ -5478,7 +5481,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@lucide/svelte@1.7.0(svelte@5.55.0)':
+  '@lucide/svelte@0.577.0(svelte@5.55.0)':
     dependencies:
       svelte: 5.55.0
 

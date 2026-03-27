@@ -23,8 +23,9 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.0.3",
 		"@eslint/js": "^9.39.4",
-		"@fontsource-variable/inter": "^5.2.8",
-		"@lucide/svelte": "^1.7.0",
+		"@fontsource-variable/inter": "latest",
+		"@internationalized/date": "^3.12.0",
+		"@lucide/svelte": "^0.577.0",
 		"@playwright/test": "latest",
 		"@sveltejs/adapter-cloudflare": "latest",
 		"@sveltejs/kit": "^2.55.0",

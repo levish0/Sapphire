@@ -1,115 +1,95 @@
 <script lang="ts">
 	import {
-		Home,
-		MagnifyingGlass,
 		Bell,
-		EnvelopeOpen,
-		User,
 		BookmarkSquare,
-		PencilSquare,
+		CodeBracket,
 		Cog6Tooth,
+		EnvelopeOpen,
+		Home,
 		Icon,
+		MagnifyingGlass,
+		RocketLaunch,
+		User,
 		type IconSource
 	} from 'svelte-hero-icons';
-
-	let expanded = $state(false);
+	import * as Avatar from '$lib/components/ui/avatar/index.js';
 
 	interface NavItem {
 		icon: IconSource;
 		label: string;
 		href: string;
-		active?: boolean;
+		active: boolean;
 	}
 
 	const navItems: NavItem[] = [
 		{ icon: Home, label: 'Home', href: '/', active: true },
-		{ icon: MagnifyingGlass, label: 'Explore', href: '/explore' },
-		{ icon: Bell, label: 'Notifications', href: '/notifications' },
-		{ icon: EnvelopeOpen, label: 'Messages', href: '/messages' },
-		{ icon: BookmarkSquare, label: 'Bookmarks', href: '/bookmarks' },
-		{ icon: User, label: 'Profile', href: '/profile' },
-		{ icon: Cog6Tooth, label: 'Settings', href: '/settings' }
+		{ icon: MagnifyingGlass, label: 'Explore', href: '/explore', active: false },
+		{ icon: Bell, label: 'Notifications', href: '/notifications', active: false },
+		{ icon: EnvelopeOpen, label: 'Messages', href: '/messages', active: false },
+		{ icon: BookmarkSquare, label: 'Bookmarks', href: '/bookmarks', active: false },
+		{ icon: CodeBracket, label: 'Creator Studio', href: '/developer', active: false },
+		{ icon: RocketLaunch, label: 'Launchpad', href: '/programs', active: false },
+		{ icon: User, label: 'Profile', href: '/profile', active: false }
 	];
+
+	const profile = {
+		name: 'Levi Park',
+		handle: '@levi.sapphire'
+	};
 </script>
 
-<aside
-	class="group fixed left-0 top-0 z-40 flex h-dvh flex-col border-r bg-card transition-all duration-300 ease-in-out"
-	class:w-[68px]={!expanded}
-	class:w-[240px]={expanded}
-	role="navigation"
+<nav
+	class="group/sidebar sticky top-0 z-20 hidden h-dvh w-[5.25rem] shrink-0 flex-col overflow-hidden border-r border-sidebar-border bg-background text-foreground transition-[width] duration-200 ease-out hover:w-[17rem] md:flex"
 	aria-label="Main navigation"
-	onmouseenter={() => (expanded = true)}
-	onmouseleave={() => (expanded = false)}
 >
-	<!-- Logo -->
-	<div class="flex h-14 items-center px-5">
-		<div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary">
-			<span class="text-sm font-bold text-primary-foreground">S</span>
+	<div class="flex h-full flex-col px-2 py-4">
+		<div class="flex flex-1 flex-col gap-1 pt-2">
+			{#each navItems as item}
+				<a
+					href={item.href}
+					aria-current={item.active ? 'page' : undefined}
+					class={`flex min-h-14 items-center gap-4 rounded-full px-4 text-base transition-colors ${
+						item.active
+							? 'font-semibold text-foreground'
+							: 'text-foreground/80 hover:bg-muted/70 hover:text-foreground'
+					}`}
+				>
+					<div class="flex size-7 shrink-0 items-center justify-center">
+						<Icon src={item.icon} solid size="24" />
+					</div>
+					<span class="hidden truncate text-[1.05rem] group-hover/sidebar:block">
+						{item.label}
+					</span>
+				</a>
+			{/each}
 		</div>
-		<span
-			class="ml-3 whitespace-nowrap text-lg font-bold tracking-tight opacity-0 transition-opacity duration-200"
-			class:opacity-100={expanded}
-		>
-			Sapphire
-		</span>
-	</div>
 
-	<!-- Navigation Items -->
-	<nav class="mt-2 flex flex-1 flex-col gap-0.5 px-3">
-		{#each navItems as item}
+		<div class="mt-auto flex flex-col gap-2 border-t border-border/70 pt-4">
 			<a
-				href={item.href}
-				class="group/item flex items-center rounded-xl px-3 py-2.5 transition-colors duration-150"
-				class:bg-muted={item.active}
-				class:text-foreground={item.active}
-				class:text-muted-foreground={!item.active}
-				class:hover:bg-muted={!item.active}
-				class:hover:text-foreground={!item.active}
+				href="/settings"
+				class="flex min-h-12 items-center gap-4 rounded-full px-4 text-foreground/80 transition-colors hover:bg-muted/70 hover:text-foreground"
 			>
 				<div class="flex size-7 shrink-0 items-center justify-center">
-					<Icon src={item.icon} solid={item.active} size="22" />
+					<Icon src={Cog6Tooth} solid size="22" />
 				</div>
-				<span
-					class="ml-3 whitespace-nowrap text-[15px] font-medium opacity-0 transition-opacity duration-200"
-					class:opacity-100={expanded}
-					class:font-semibold={item.active}
-				>
-					{item.label}
-				</span>
+				<span class="hidden truncate text-sm font-medium group-hover/sidebar:block">Settings</span>
 			</a>
-		{/each}
-	</nav>
 
-	<!-- Post Button -->
-	<div class="p-3">
-		<button
-			class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
-		>
-			<Icon src={PencilSquare} solid size="20" />
-			<span
-				class="whitespace-nowrap opacity-0 transition-opacity duration-200"
-				class:opacity-100={expanded}
+			<a
+				href="/profile"
+				class="flex items-center gap-3 rounded-full px-3 py-3 transition-colors hover:bg-muted/70"
 			>
-				Post
-			</span>
-		</button>
-	</div>
-
-	<!-- User Section -->
-	<div class="border-t p-3">
-		<div class="flex items-center rounded-xl px-3 py-2 transition-colors hover:bg-muted">
-			<div
-				class="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-indigo-600"
-			>
-				<span class="text-xs font-bold text-white">L</span>
-			</div>
-			<div
-				class="ml-3 min-w-0 opacity-0 transition-opacity duration-200"
-				class:opacity-100={expanded}
-			>
-				<p class="truncate text-sm font-semibold">levish</p>
-				<p class="truncate text-xs text-muted-foreground">@evil_sh0t</p>
-			</div>
+				<Avatar.Root class="size-10 shrink-0">
+					<Avatar.Image src="" alt="User avatar" />
+					<Avatar.Fallback class="bg-primary text-xs font-semibold text-primary-foreground">
+						LP
+					</Avatar.Fallback>
+				</Avatar.Root>
+				<div class="hidden min-w-0 flex-1 group-hover/sidebar:block">
+					<p class="truncate text-sm font-semibold text-foreground">{profile.name}</p>
+					<p class="truncate text-sm text-muted-foreground">{profile.handle}</p>
+				</div>
+			</a>
 		</div>
 	</div>
-</aside>
+</nav>

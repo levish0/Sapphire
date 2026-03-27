@@ -4,7 +4,7 @@
 			"type": "stdio",
 			"command": "npx",
 			"env": {},
-				"args": ["/c", "npx", "-y", "@sveltejs/mcp"],
+			"args": ["/c", "npx", "-y", "@sveltejs/mcp"]
 		}
 	}
 }

@@ -38,7 +38,7 @@ argon2 = "0.5.3"
 oauth2 = { version = "5.0.0", features = ["reqwest"] }
 totp-rs = { version = "5.7.1", features = ["qr"] }
 cookie = "0.18.1"
-aws-sdk-s3 = "1.127.0"
+aws-sdk-s3 = "1.128.0"
 aws-config = { version = "1.8.15", features = ["behavior-version-latest"] }
 meilisearch-sdk = { version = "0.32.0" }
 utoipa = { version = "5.4.0", features = ["axum_extras", "openapi_extensions", "time", "uuid", "chrono"] }

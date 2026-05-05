@@ -23,7 +23,7 @@ sapphire_entity = {path = "crates/sapphire_entity"}
 sapphire_worker = {path = "crates/sapphire_worker"}
 
 # External dependencies
-tokio = { version = "1.50.0", features = ["full"] }
+tokio = { version = "1.52.2", features = ["full"] }
 axum = { version = "0.8.8", features = ["multipart", "macros"] }
 axum-extra = { version = "0.12.5", features = ["typed-header", "query"] }
 tower = { version = "0.5.3", features = ["timeout", "limit", "buffer"] }

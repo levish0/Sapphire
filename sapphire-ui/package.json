@@ -39,7 +39,7 @@
 		"@zxcvbn-ts/language-en": "^3.0.2",
 		"bits-ui": "^2.16.4",
 		"clsx": "^2.1.1",
-		"eslint": "^9.39.4",
+		"eslint": "^10.1.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.16.0",
 		"globals": "^17.4.0",
